@@ -2,14 +2,14 @@ print("\n\n")
 import os
 
 dicNotas = {
-    1: {
-    "idEstudiante": "1",
-    "idMateria": "2",
-    "nota1": 5.0,
-    "nota2": 0.0,
-    "nota3": 0.0,
-    "notaF": "Pendiente"
-    },
+    0: {
+    #"codigo": "",
+    "nota1": "",
+    "nota2": "",
+    "nota3": "",
+    "nota4": "",
+    "nota5": "",
+    }
 }
 
 dicEstudiantes = {
@@ -37,16 +37,16 @@ dicEstudiantes = {
 
 dicMaterias = {
     1: {
-    "nombre": "Matemáticas",
+    "nombre": "Matemáticas"
     },
     2: {
-    "nombre": "Física",
+    "nombre": "Física"
     },
     3: {
-    "nombre": "Lengua",
+    "nombre": "Lengua"
     },
     4: {
-    "nombre": "Química",
+    "nombre": "Química"
     }
 }
 
@@ -61,9 +61,9 @@ def verMenu():
 def verMenuNotas(notas):
     os.system("clear")
     print("********* NOTAS *********\n")
-    print("CODIGO\t\t\tNOTA 1\t\t\tNOTA 2\t\t\tNOTA 3\t\t\tNOTA FINAL")
+    print("CODIGO\t\t\tNOTA 1\t\t\tNOTA 2\t\t\tNOTA 3")
     for nota in notas:
-        print(nota,"\t\t\t",notas[nota]["nota1"],"\t\t\t",notas[nota]["nota2"],"\t\t\t",notas[nota]["nota3"],"\t\t\t", notas[nota]["notaF"])
+        print(nota,"\t\t\t",notas[nota]["nota1"],"\t\t\t",notas[nota]["nota2"],"\t\t\t",notas[nota]["nota3"])
     print('''Seleccione una de las siguientes opciones:
     1. Agregar nota         2. Editar nota
     3. Eliminar nota        0. Salir''')
@@ -92,36 +92,11 @@ def verMenuMaterias(materias):
     1. Crear materia        2. Editar materia
     3. Eliminar materia     0. Salir''')
 
-#           VER NOTAS POR MATERIA
-def verNotasMateria(notasMateria):
-    os.system("clear")
-    print("********* VER NOTAS *********")
-    print(f'{"CODIGO":<25} {"NOTAS":^10} {"MATERIAS":^10}')
-    print(f'{"------":<25} {"-----":^10} {"--------":^10}')
-    for verNota in notasMateria:
-        print(verNota, "\t\t\t", notasMateria[verNota][""])
-    print('''Seleccione una de las siguientes opciones: 
-    1. Ver notas por materia                2. Editar notas por materia
-    3. Eliminar notas por materia           4. Salir''')
-
-#           VER NOTAS POR ESTUDIANTE
-def verNotasEstudiante(notasEstudiante):
-    os.system("clear")
-    print("********* VER NOTAS DE ESTUDIANTES *********")
-    print(f'{"CODIGO":<25} {"NOTAS":^10} {"ESTUDIANTES":^10}')
-    print(f'{"------":<25} {"-----":^10} {"-----------":^10}')
-    for verNotaEstudiante in notasEstudiante:
-        print(verNotaEstudiante, "\t\t\t", notasEstudiante[verNotaEstudiante][""])
-    print('''Seleccione una de las siguientes opciones: 
-    1. Ver notas por estudiantes                2. Editar notas por estudiantes
-    3. Eliminar notas por estudiante            4. Salir''')
-
 verMenu()
 opcMenu = input()
 while opcMenu != "0":
     if opcMenu == "1":
         print("********* NOTAS *********\n")
-        print("********* NOTAS DE MATERIAS Y ESTUDIANTES *********\n")
         verMenuNotas(dicNotas)
         opc = input()
         while opc != "0":
@@ -132,7 +107,7 @@ while opcMenu != "0":
                 codigo = input()
                 print("Por favor ingrese la nota 1: ")
                 nota1 = float(input())
-                print("Nota agregada con exito")        
+                print("Nota agregada con exito")
                 print("Por favor ingrese la nota 2: ")
                 nota2 = float(input())
                 print("Nota agregada con exito")
@@ -224,16 +199,16 @@ while opcMenu != "0":
     elif opcMenu == "3":
         print("********* MATERIAS **********\n")
         verMenuMaterias(dicMaterias)
-        materias = input()
-        while materias != "0":
-            if materias == "1":
+        opc = input()
+        while opc != "0":
+            if opc == "1":
                 print("********* CREAR *********\n")
                 id = list(dicMaterias.keys())[len(dicMaterias)-1]+1
                 print("Por favor ingrese el nombre de la nueva materia: ")
                 nombre = input()
                 dicMaterias[id] = {"nombre": nombre}
                 print("¡Materia agregada con exito!")
-            elif materias == "2":
+            elif opc == "2":
                 print("********* EDITAR *********\n")
                 print("Por favor ingrese el código de la materia a editar: ")
                 id = int(input())
@@ -241,7 +216,7 @@ while opcMenu != "0":
                 print("Por favor ingrese el nuevo nombre de la materia: ")
                 dicMaterias[id]["nombre"] = input()
                 print("¡Materia editada con exito!")
-            elif materias == "3":
+            elif opc == "3":
                 print("******** ELIMINAR ********\n")
                 print("Por favor ingrese el código de la materia a eliminar: ")
                 id = int(input())
@@ -252,8 +227,7 @@ while opcMenu != "0":
             else:
                 print("Por favor, seleccione una opción válida\n")
             verMenuMaterias(dicMaterias)
-            opc = input ()
-           
+            opc = input ()        
     else:
         print("Por favor, seleccione una opción válida\n")
     verMenu()
