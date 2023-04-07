@@ -214,5 +214,5 @@ while True:
         eliminarEstudiante()
     elif option == 10:
         break
-    else:
+ else:
         print("¡OPCION INVALIDA!")
