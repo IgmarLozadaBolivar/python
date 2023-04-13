@@ -85,3 +85,18 @@ def rebotes_pelota(altura_inicial, factor_reduccion):
 
 rebotes = rebotes_pelota(10, 0.9)
 print("La pelota rebota {} veces antes de alcanzar 0.5 metros de altura.".format(rebotes))
+
+'''
+Una pelota rebota varias veces y en cada oportunidad pierde el 10% de la
+altura del rebote anterior. Si se dejo caer desde una altura A de 10 metros,
+cuantas veces rebotara antes de alcanzar apenas 0,5 metros de altura?
+'''
+
+altura = 10.0  # altura inicial de la pelota
+rebotes = 0    # contador de rebotes
+
+while altura >= 0.5:
+    altura = altura * 0.9   # altura del siguiente rebote
+    rebotes += 1            # incrementar contador de rebotes
+
+print("La pelota rebota", rebotes, "veces antes de alcanzar una altura de 0.5 metros.")
