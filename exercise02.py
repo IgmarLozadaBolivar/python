@@ -13,9 +13,9 @@ print('Existe esta cantidad de (O): ',my_list.count('o'))
 print('Existe esta cantidad de (U): ',my_list.count('u'))
 print('\nPalabra ingresada: ',letter,'\n')
 
-
 dicCategorias={1:25000,2:30000,3:40000,4:45000,5:60000}
 totalHonorarios = 0
+honorariosTrainers = []
 
 print('\n------------------------------')
 print('CENTRO DE ENTRENAMIENTO CAMPUS')
@@ -43,19 +43,26 @@ for i in range(nTrainers):
     print('---------------------------')
     horasLaboradas = float(input('Ingrese el numero de hrs laboradas al mes: '))
 
-valorHorasTrabajadas = dicCategorias[categoria]
-honorarios = horasLaboradas * valorHorasTrabajadas
+    valorHorasTrabajadas = dicCategorias[categoria]
+    honorarios = horasLaboradas * valorHorasTrabajadas
 
-print('NOMBRE\t\tC.C\t\tCATEGORIA')
-print(nombre,'\t\t',cedula,'\t\t',categoria)
-print('\n-------------------')
-print('VALOR DEL HONORARIO')
-print('-------------------')
-print(honorarios,'\n')
+    print('NOMBRE\t\tC.C\t\tCATEGORIA')
+    print(nombre,'\t\t',cedula,'\t\t',categoria)
+    print('\n-------------------')
+    print('VALOR DEL HONORARIO')
+    print('-------------------')
+    print(honorarios,'\n')
 
-totalHonorarios += honorarios
+    honorariosTrainers.append(honorarios) #agregar el honorario a la lista
+
+    totalHonorarios += honorarios
 
 print('\n-------------------------------')
-print('TOTAL DEL HONORARIO DEL TRAINER')
+print('TOTAL DEL HONORARIO DE LOS TRAINERS')
 print('-------------------------------')
 print(totalHonorarios)
+
+print('\n-------------------------')
+print('HONORARIOS DE LOS TRAINERS')
+print('-------------------------')
+print(honorariosTrainers)
